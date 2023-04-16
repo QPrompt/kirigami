@@ -144,16 +144,21 @@ Item {
             property int startMouseY
             property real drawerShowAdjust
 
-            readonly property int currentThird: (3*mouseX)/width
             readonly property QtObject actionUnderMouse: {
                 if (!containsMouse) {
                     return null;
                 }
-                switch(currentThird) {
-                    case 0: return leftAction;
-                    case 1: return action;
-                    case 2: return rightAction;
-                    default: return null
+                const visualMouseX = root.LayoutMirroring.enabled ? width - mouseX : mouseX;
+                if (visualMouseX < 0) {
+                    return null;
+                } else if (visualMouseX <= width / 3) {
+                    return root.leftAction;
+                } else if (visualMouseX <= 2 * width / 3) {
+                    return root.action;
+                } else if (visualMouseX <= width) {
+                    return root.rightAction;
+                } else {
+                    return null;
                 }
             }
 
