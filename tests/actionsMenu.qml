@@ -12,8 +12,6 @@ import org.kde.kirigami 2.20 as Kirigami
 Kirigami.ApplicationWindow {
     id: main
 
-    header: Kirigami.ToolBarApplicationHeader {}
-
     pageStack.initialPage: Kirigami.Page {
         QQC2.Button {
             text: "button"
@@ -33,9 +31,21 @@ Kirigami.ApplicationWindow {
 
         title: "aaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaa"
         actions {
-            main:  Kirigami.Action { icon.name: "kate"; text: "BonDia" }
-            left : Kirigami.Action { icon.name: "kate"; text: "BonDia" }
-            right: Kirigami.Action { icon.name: "kate"; text: "BonDia" }
+            main:  Kirigami.Action {
+                icon.name: "list-add"
+                text: "Add New"
+                onTriggered: print(text)
+            }
+            left : Kirigami.Action {
+                icon.name: "dialog-cancel"
+                text: "Cancel"
+                onTriggered: print(text)
+            }
+            right: Kirigami.Action {
+                icon.name: "dialog-ok"
+                text: "Ok"
+                onTriggered: print(text)
+            }
         }
 
         QQC2.ActionGroup {
