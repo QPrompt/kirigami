@@ -146,6 +146,9 @@ Item {
 
             readonly property int currentThird: (3*mouseX)/width
             readonly property QtObject actionUnderMouse: {
+                if (!containsMouse) {
+                    return null;
+                }
                 switch(currentThird) {
                     case 0: return leftAction;
                     case 1: return action;
