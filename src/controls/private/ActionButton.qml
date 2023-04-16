@@ -105,7 +105,7 @@ Item {
                 if (root.hasGlobalDrawer && globalDrawer.enabled && globalDrawer.modal) {
                     globalDrawer.peeking = true;
                     globalDrawer.visible = true;
-                    if (Qt.application.layoutDirection === Qt.LeftToRight) {
+                    if (root.LayoutMirroring.enabled) {
                         globalDrawer.position = Math.min(1, Math.max(0, (x - root.width/2 + button.width/2)/globalDrawer.contentItem.width + mouseArea.drawerShowAdjust));
                     } else {
                         globalDrawer.position = Math.min(1, Math.max(0, (root.width/2 - button.width/2 - x)/globalDrawer.contentItem.width + mouseArea.drawerShowAdjust));
@@ -114,7 +114,7 @@ Item {
                 if (root.hasContextDrawer && contextDrawer.enabled && contextDrawer.modal) {
                     contextDrawer.peeking = true;
                     contextDrawer.visible = true;
-                    if (Qt.application.layoutDirection === Qt.LeftToRight) {
+                    if (root.LayoutMirroring.enabled) {
                         contextDrawer.position = Math.min(1, Math.max(0, (root.width/2 - button.width/2 - x)/contextDrawer.contentItem.width + mouseArea.drawerShowAdjust));
                     } else {
                         contextDrawer.position = Math.min(1, Math.max(0, (x - root.width/2 + button.width/2)/contextDrawer.contentItem.width + mouseArea.drawerShowAdjust));
@@ -267,7 +267,7 @@ Item {
                 target: root.hasGlobalDrawer ? globalDrawer : null
                 function onPositionChanged() {
                     if ( globalDrawer && globalDrawer.modal && !mouseArea.pressed && !edgeMouseArea.pressed && !fakeContextMenuButton.pressed) {
-                        if (Qt.application.layoutDirection === Qt.LeftToRight) {
+                        if (root.LayoutMirroring.enabled) {
                             button.x = globalDrawer.contentItem.width * globalDrawer.position + root.width/2 - button.width/2;
                         } else {
                             button.x = -globalDrawer.contentItem.width * globalDrawer.position + root.width/2 - button.width/2
@@ -279,7 +279,7 @@ Item {
                 target: root.hasContextDrawer ? contextDrawer : null
                 function onPositionChanged() {
                     if (contextDrawer && contextDrawer.modal && !mouseArea.pressed && !edgeMouseArea.pressed && !fakeContextMenuButton.pressed) {
-                        if (Qt.application.layoutDirection === Qt.LeftToRight) {
+                        if (root.LayoutMirroring.enabled) {
                             button.x = root.width/2 - button.width/2 - contextDrawer.contentItem.width * contextDrawer.position;
                         } else {
                             button.x = root.width/2 - button.width/2 + contextDrawer.contentItem.width * contextDrawer.position;
