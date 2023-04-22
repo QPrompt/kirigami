@@ -234,6 +234,8 @@ Kirigami.AbstractListItem {
      */
     property alias subtitleItem: subtitleItem
 
+    property bool toolTipVisible: true
+
     default property alias _basicDefault: layout.data
 //END properties
 
@@ -358,7 +360,7 @@ Kirigami.AbstractListItem {
                     }
                     return txt;
                 }
-                QQC2.ToolTip.visible: QQC2.ToolTip.text.length > 0 && (Kirigami.Settings.tabletMode ? listItem.down : listItem.hovered)
+                QQC2.ToolTip.visible: toolTipVisible && QQC2.ToolTip.text.length > 0 && (Kirigami.Settings.tabletMode ? listItem.down : listItem.hovered)
                 QQC2.ToolTip.delay: Kirigami.Settings.tabletMode ? Qt.styleHints.mousePressAndHoldInterval : Kirigami.Units.toolTipDelay
             }
         }
