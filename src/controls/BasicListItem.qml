@@ -234,7 +234,7 @@ Kirigami.AbstractListItem {
      */
     property alias subtitleItem: subtitleItem
 
-    property bool toolTipVisible: true
+    property bool toolTipVisible: false
 
     default property alias _basicDefault: layout.data
 //END properties
