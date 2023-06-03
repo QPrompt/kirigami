@@ -148,16 +148,14 @@ T2.ItemDelegate {
     implicitWidth: contentItem ? contentItem.implicitWidth + leftPadding + rightPadding : Kirigami.Units.gridUnit * 12
     implicitHeight: contentItem ? contentItem.implicitHeight + topPadding + bottomPadding : 0
 
-    width: parent?.width > 0 ? parent.width : implicitWidth
-    height: implicitHeight
-
+    width: parent?.width > 0 ? parent.width : undefined
     Layout.fillWidth: true
 
     opacity: enabled ? 1 : 0.6
 
     onVisibleChanged: {
         if (visible) {
-            height = Qt.binding(() => implicitHeight);
+            height = undefined;
         } else {
             if (ListView.view?.visible) {
                 height = 0;
