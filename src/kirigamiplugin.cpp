@@ -292,6 +292,12 @@ void KirigamiPlugin::registerTypes(const char *uri)
     // 2.20
     qmlRegisterType(componentUrl(QStringLiteral("SelectableLabel.qml")), uri, 2, 20, "SelectableLabel");
 
+    // When adding new types, register them here with a higher minor version
+    // then the last type above, then register them in CMakeLists using
+    // ecm_target_qml_sources(), and also bump minor version in
+    // ecm_add_qml_module() and ecm_generate_qmltypes(). Finally, run
+    // `make qmltypes` from build directory.
+
     qmlProtectModule(uri, 2);
 }
 

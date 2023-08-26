@@ -1,7 +1,7 @@
 
 add_subdirectory(libkirigami)
 
-ecm_add_qml_module(KirigamiPlugin URI "org.kde.kirigami" VERSION 2.0 CLASSNAME KirigamiPlugin)
+ecm_add_qml_module(KirigamiPlugin URI "org.kde.kirigami" VERSION 2.20 CLASSNAME KirigamiPlugin)
 
 ecm_add_qml_module_dependencies(KirigamiPlugin DEPENDS
     "QtQuick.Controls 2.15"
@@ -82,7 +82,7 @@ if (HAVE_QTGUI_OPENGL AND NOT KF6_PORTING_TODO)
 endif()
 add_subdirectory(scenegraph/shaders6)
 
-ecm_target_qml_sources(KirigamiPlugin SOURCES
+ecm_target_qml_sources(KirigamiPlugin VERSION 2.0 SOURCES
     controls/Action.qml
     controls/AbstractApplicationHeader.qml
     controls/AbstractApplicationWindow.qml
@@ -258,7 +258,7 @@ endif()
 
 ecm_finalize_qml_module(KirigamiPlugin DESTINATION ${KDE_INSTALL_QMLDIR})
 
-ecm_generate_qmltypes(org.kde.kirigami 2.0 DESTINATION ${KDE_INSTALL_QMLDIR}/org/kde/kirigami.2)
+ecm_generate_qmltypes(org.kde.kirigami 2.20 DESTINATION ${KDE_INSTALL_QMLDIR}/org/kde/kirigami)
 
 if (ANDROID)
     install(FILES KF6Kirigami2-android-dependencies.xml
