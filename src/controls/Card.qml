@@ -7,8 +7,8 @@
 import QtQuick 2.15
 import QtQuick.Layouts 1.15
 import QtQuick.Controls 2.15 as QQC2
-import org.kde.kirigami 2.20 as Kirigami
-import "private" as P
+import org.kde.kirigami as Kirigami
+import org.kde.kirigami.private as KP
 
 /**
  * @brief This is the standard layout of a Card.
@@ -65,7 +65,7 @@ Kirigami.AbstractCard {
     readonly property alias banner: bannerImage
 
 
-    header: P.BannerImage {
+    header: KP.BannerImage {
         id: bannerImage
         anchors.leftMargin: -root.leftPadding + root.background.border.width
         anchors.topMargin: -root.topPadding + root.background.border.width

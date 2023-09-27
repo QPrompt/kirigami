@@ -9,7 +9,6 @@ import QtQuick.Layouts 1.3
 import QtQuick.Controls 2.15 as QQC2
 import QtQuick.Templates 2.15 as T2
 import org.kde.kirigami as Kirigami
-import "private" as P
 
 /**
  * @brief An overlay sheet that covers the current Page content.

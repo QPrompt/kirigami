@@ -8,7 +8,7 @@ import QtQuick 2.15
 import QtQuick.Templates 2.15 as T2
 import QtQuick.Controls 2.15 as QQC2
 import org.kde.kirigami as Kirigami
-import "private" as P
+import org.kde.kirigami.templates.private as KTP
 
 /**
  * Overlay Drawers are used to expose additional UI elements needed for
@@ -98,7 +98,7 @@ T2.Drawer {
      *
      * @since 2.5
      */
-    readonly property P.IconPropertiesGroup handleOpenIcon: P.IconPropertiesGroup {
+    readonly property KTP.IconPropertiesGroup handleOpenIcon: KTP.IconPropertiesGroup {
         source: root.edge === Qt.RightEdge ? "view-right-close" : "view-left-close"
     }
 
@@ -117,7 +117,7 @@ T2.Drawer {
      *
      * @since 2.5
      */
-    property P.IconPropertiesGroup handleClosedIcon: P.IconPropertiesGroup {
+    property KTP.IconPropertiesGroup handleClosedIcon: KTP.IconPropertiesGroup {
         source: root.edge === Qt.RightEdge ? "view-right-new" : "view-left-new"
     }
 
@@ -146,7 +146,7 @@ T2.Drawer {
      * handle for the Drawer.
      * @property MouseArea handle
      **/
-    readonly property Item handle: P.DrawerHandle {
+    readonly property Item handle: KTP.DrawerHandle {
         drawer: root
     }
 //END properties

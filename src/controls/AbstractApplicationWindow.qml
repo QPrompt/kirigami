@@ -4,12 +4,11 @@
  *  SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-import QtQuick 2.15
-import QtQml 2.15
-import QtQuick.Controls 2.15 as QQC2
-import QtQuick.Window 2.5
-import org.kde.kirigami 2.4 as Kirigami
-import "templates/private" as TP
+import QtQuick
+import QtQuick.Controls as QQC2
+import org.kde.kirigami as Kirigami
+import org.kde.kirigami.templates.private as KTP
+
 /**
  * A window that provides some basic features needed for all apps
  * Use this class only if you need a custom content for your application,
@@ -231,7 +230,7 @@ QQC2.ApplicationWindow {
 
     color: Kirigami.Theme.backgroundColor
 
-    TP.PassiveNotificationsManager {
+    KTP.PassiveNotificationsManager {
         id: notificationsObject
         anchors.bottom: parent.bottom
         anchors.horizontalCenter: parent.horizontalCenter

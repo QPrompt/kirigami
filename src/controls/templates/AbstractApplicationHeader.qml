@@ -7,8 +7,7 @@
 import QtQuick 2.7
 import QtQuick.Layouts 1.2
 import QtQuick.Controls 2.4 as QQC2
-import org.kde.kirigami 2.14 as Kirigami
-import "private"
+import org.kde.kirigami as Kirigami
 
 /**
  * @brief An item that can be used as a title for the application.

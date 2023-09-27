@@ -4,8 +4,8 @@
  *  SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-import "templates" as T
-import "private" as P
+import org.kde.kirigami.private as KP
+import org.kde.kirigami.templates as KT
 
 /**
  * @brief AbstractCard is the base for cards.
@@ -21,10 +21,10 @@ import "private" as P
  * @inherit org::kde::kirigami::templates::AbstractCard
  * @since 2.4
  */
-T.AbstractCard {
+KT.AbstractCard {
     id: root
 
-    background: P.DefaultCardBackground {
+    background: KP.DefaultCardBackground {
         clickFeedback: root.showClickFeedback
         hoverFeedback: root.hoverEnabled
     }

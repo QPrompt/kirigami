@@ -5,9 +5,9 @@
  */
 
 import QtQuick
-import org.kde.kirigami as Kirigami
-import org.kde.kirigami.private as KirigamiPrivate
 import QtQuick.Controls as QQC2
+import org.kde.kirigami as Kirigami
+import org.kde.kirigami.private as KP
 
 /**
  * @brief A link button that contains a URL.
@@ -57,7 +57,7 @@ Kirigami.LinkButton {
         QQC2.MenuItem {
             text: qsTr("Copy Link to Clipboard")
             icon.name: "edit-copy"
-            onClicked: KirigamiPrivate.CopyHelperPrivate.copyTextToClipboard(button.url)
+            onClicked: KP.CopyHelperPrivate.copyTextToClipboard(button.url)
         }
     }
 }

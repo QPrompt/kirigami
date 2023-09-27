@@ -7,8 +7,8 @@
 import QtQuick 2.1
 import QtQuick.Templates 2.0 as T2
 import org.kde.kirigami 2.15 as Kirigami
-import "private" as P
-import "templates" as T
+import org.kde.kirigami.private as KP
+import org.kde.kirigami.templates as KT
 
 /**
  * Overlay Drawers are used to expose additional UI elements needed for
@@ -19,7 +19,7 @@ import "templates" as T
  *
  * @inherit org::kde::kirigami::templates::OverlayDrawer
  */
-T.OverlayDrawer {
+KT.OverlayDrawer {
     id: root
 
 //BEGIN Properties
@@ -128,7 +128,7 @@ T.OverlayDrawer {
             }
             visible: !root.modal
         }
-        P.EdgeShadow {
+        KP.EdgeShadow {
             z: -2
             visible: root.modal
             edge: root.edge

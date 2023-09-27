@@ -6,9 +6,8 @@
 
 import QtQuick 2.10
 import QtQuick.Layouts 1.2
-import org.kde.kirigami 2.4 as Kirigami
-import "private" as P
-
+import org.kde.kirigami as Kirigami
+import org.kde.kirigami.private as KP
 
 //TODO KF6: remove the whole class?
 /**
@@ -29,7 +28,7 @@ import "private" as P
  * @inherit QtQuick.GridView
  * @since 2.4
  */
-P.CardsGridViewPrivate {
+KP.CardsGridViewPrivate {
     id: root
 
     /**

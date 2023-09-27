@@ -9,8 +9,8 @@ import QtQml 2.15
 import QtQuick.Layouts 1.2
 import QtQuick.Controls 2.4 as QQC2
 import QtQuick.Templates 2.15 as T
-import org.kde.kirigami 2.14 as Kirigami
-import "private" as P
+import org.kde.kirigami as Kirigami
+import org.kde.kirigami.private as KP
 
 /**
  * @brief A toolbar built out of a list of actions.
@@ -158,13 +158,13 @@ QQC2.Control {
         spacing: Kirigami.Units.smallSpacing
         layoutDirection: root.mirrored ? Qt.RightToLeft : Qt.LeftToRight
 
-        fullDelegate: P.PrivateActionToolButton {
+        fullDelegate: KP.PrivateActionToolButton {
             flat: root.flat
             display: root.display
             action: Kirigami.ToolBarLayout.action
         }
 
-        iconDelegate: P.PrivateActionToolButton {
+        iconDelegate: KP.PrivateActionToolButton {
             flat: root.flat
             display: QQC2.Button.IconOnly
             action: Kirigami.ToolBarLayout.action
@@ -184,7 +184,7 @@ QQC2.Control {
             }
         }
 
-        moreButton: P.PrivateActionToolButton {
+        moreButton: KP.PrivateActionToolButton {
             flat: root.flat
 
             action: Kirigami.Action {
@@ -195,8 +195,8 @@ QQC2.Control {
 
             menuActions: root.actions
 
-            menuComponent: P.ActionsMenu {
-                submenuComponent: P.ActionsMenu {
+            menuComponent: KP.ActionsMenu {
+                submenuComponent: KP.ActionsMenu {
                     Binding {
                         target: parentItem
                         property: "visible"
@@ -206,7 +206,7 @@ QQC2.Control {
                     }
                 }
 
-                itemDelegate: P.ActionMenuItem {
+                itemDelegate: KP.ActionMenuItem {
                     visible: layout.hiddenActions.includes(action)
                              && (!(action instanceof Kirigami.Action) || action.visible)
                 }

@@ -10,8 +10,8 @@ import QtQml 2.15
 import QtQuick.Layouts 1.15
 import QtQuick.Templates 2.15 as T
 import QtQuick.Controls 2.15 as QQC2
-import org.kde.kirigami as Kirigami
 import Qt5Compat.GraphicalEffects as GE
+import org.kde.kirigami as Kirigami
 
 /**
  * @brief Popup dialog that is used for short tasks and user interaction.

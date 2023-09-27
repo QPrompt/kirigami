@@ -6,11 +6,10 @@
 
 import QtQuick
 import QtQuick.Layouts
-import QtQuick.Templates as QT
+import QtQuick.Templates as T
 import QtQuick.Controls as QQC2
 import org.kde.kirigami as Kirigami
-import "private/globaltoolbar" as GlobalToolBar
-import "templates" as KT
+import org.kde.kirigami.private.globaltoolbar as KirigamiGlobalToolBar
 
 /**
  * PageRow implements a row-based navigation model, which can be used
@@ -22,7 +21,7 @@ import "templates" as KT
  *
  * @inherits QtQuick.Templates.Control
  */
-QT.Control {
+T.Control {
     id: root
 
 //BEGIN PROPERTIES
@@ -217,7 +216,7 @@ QT.Control {
      *
      * @return The new created page (or the last one if it was an array).
      */
-    function push(page, properties): QT.Page {
+    function push(page, properties): T.Page {
         if (!pagesLogic.verifyPages(page, properties)) {
             console.warn("Pushed pages do not confront the rules.  Please check the documentation.");
             console.trace();
@@ -242,7 +241,7 @@ QT.Control {
      * @param windowProperties The properties given to the initialized window on desktop.
      * @return Returns a newly created page.
      */
-    function pushDialogLayer(page, properties = {}, windowProperties = {}): QT.Page {
+    function pushDialogLayer(page, properties = {}, windowProperties = {}): T.Page {
         if (!pagesLogic.verifyPages(page, properties)) {
             console.warn("Page pushed as a dialog or layer does not confront the rules. Please check the documentation.");
             console.trace();
@@ -344,7 +343,7 @@ QT.Control {
      * @return The new created page (or the last one if it was an array).
      * @since 2.7
      */
-    function insertPage(position, page, properties): QT.Page {
+    function insertPage(position, page, properties): T.Page {
         if (!pagesLogic.verifyPages(page, properties)) {
             console.warn("Inserted pages do not confront the rules. Please check the documentation.");
             console.trace();
@@ -375,7 +374,7 @@ QT.Control {
      * @return The page that has just been removed
      * @since 2.7
      */
-    function removePage(page): QT.Page {
+    function removePage(page): T.Page {
         if (depth > 0) {
             return columnView.removeItem(page);
         }
@@ -388,7 +387,7 @@ QT.Control {
      * to unwind to the first page specify page as null.
      * @return The page instance that was popped off the stack.
      */
-    function pop(page): QT.Page {
+    function pop(page): T.Page {
         if (depth > 0) {
             return columnView.pop(page);
         }
@@ -411,7 +410,7 @@ QT.Control {
      * @return The new created page (or the last one if it was an array).
      * @see push() for details.
      */
-    function replace(page, properties): QT.Page {
+    function replace(page, properties): T.Page {
         if (!pagesLogic.verifyPages(page, properties)) {
             console.warn("Specified pages do not confront the rules. Please check the documentation.");
             console.trace();
@@ -478,7 +477,7 @@ QT.Control {
      * @return the page at idx
      * @param idx the depth of the page we want
      */
-    function get(idx): QT.Page {
+    function get(idx): T.Page {
         return items[idx];
     }
 
@@ -642,7 +641,7 @@ QT.Control {
 
     Keys.forwardTo: [currentItem]
 
-    GlobalToolBar.PageRowGlobalToolBarStyleGroup {
+    KirigamiGlobalToolBar.PageRowGlobalToolBarStyleGroup {
         id: globalToolBar
         readonly property int leftReservedSpace: globalToolBarUI.item ? globalToolBarUI.item.leftReservedSpace : 0
         readonly property int rightReservedSpace: globalToolBarUI.item ? globalToolBarUI.item.rightReservedSpace : 0
@@ -765,7 +764,7 @@ QT.Control {
             right: parent.right
         }
         z: 100
-        property QT.Control pageRow: root
+        property T.Control pageRow: root
         active: (!leadingVisibleItem || leadingVisibleItem.globalToolBarStyle !== Kirigami.ApplicationHeaderStyle.None) &&
                 (globalToolBar.actualStyle !== Kirigami.ApplicationHeaderStyle.None || (leadingVisibleItem && leadingVisibleItem.globalToolBarStyle === Kirigami.ApplicationHeaderStyle.ToolBar))
         visible: active
@@ -792,11 +791,11 @@ QT.Control {
         function verifyPages(pages, properties): bool {
             function validPage(page) {
                 //don't try adding an already existing page
-                if (page instanceof QT.Page && columnView.containsItem(page)) {
+                if (page instanceof T.Page && columnView.containsItem(page)) {
                     console.log(`Page ${page} is already in the PageRow`)
                     return false
                 }
-                return page instanceof QT.Page || page instanceof Component || typeof page === 'string'
+                return page instanceof T.Page || page instanceof Component || typeof page === 'string'
                     || (typeof page === 'object' && typeof page.toString() === 'string')
             }
 
@@ -895,7 +894,7 @@ QT.Control {
             return pageComp
         }
 
-        function initPage(page, properties): QT.Page {
+        function initPage(page, properties): T.Page {
             const pageComp = getPageComponent(page, properties);
 
             if (pageComp) {
@@ -917,7 +916,7 @@ QT.Control {
             return page;
         }
 
-        function initAndInsertPage(position, page, properties): QT.Page {
+        function initAndInsertPage(position, page, properties): T.Page {
             page = initPage(page, properties);
             columnView.insertItem(position, page);
             return page;

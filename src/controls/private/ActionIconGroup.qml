@@ -4,7 +4,7 @@
  *  SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-import QtQml 2.1
+import QtQml
 import QtQuick
 
 QtObject {
@@ -14,4 +14,3 @@ QtObject {
     property int height
     property color color: Qt.rgba(0, 0, 0, 0)
 }
-

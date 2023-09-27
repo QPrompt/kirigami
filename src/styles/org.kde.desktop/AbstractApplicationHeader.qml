@@ -5,10 +5,10 @@
  */
 
 import QtQuick 2.5
-import org.kde.kirigami 2.4 as Kirigami
-import "../../templates" as T
+import org.kde.kirigami as Kirigami
+import org.kde.kirigami.templates as KT
 
-T.AbstractApplicationHeader {
+KT.AbstractApplicationHeader {
     id: root
 
     // Always use header bg color for toolbar (if available), even if the page

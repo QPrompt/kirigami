@@ -5,10 +5,9 @@
  */
 
 import QtQuick 2.5
-import org.kde.kirigami 2.5 as Kirigami
-import "private" as P
-import "templates" as T
-
+import org.kde.kirigami as Kirigami
+import org.kde.kirigami.private as KP
+import org.kde.kirigami.templates as KT
 
 //TODO KF6: remove
 /**
@@ -25,7 +24,7 @@ import "templates" as T
  *
  * @inherit org::kde::kirigami::templates::AbstractApplicationHeader
  */
-T.AbstractApplicationHeader {
+KT.AbstractApplicationHeader {
     id: root
 
     Kirigami.Theme.inherit: false
@@ -33,7 +32,7 @@ T.AbstractApplicationHeader {
 
     background: Rectangle {
         color: Kirigami.Theme.backgroundColor
-        P.EdgeShadow {
+        KP.EdgeShadow {
             id: shadow
             visible: root.separatorVisible
             anchors {

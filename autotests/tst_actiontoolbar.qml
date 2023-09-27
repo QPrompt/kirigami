@@ -7,10 +7,8 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.12
 import QtTest 1.0
-import org.kde.kirigami 2.14 as Kirigami
-
-// TODO: Find a nicer way to handle this
-import "../src/controls/private" as KirigamiPrivate
+import org.kde.kirigami as Kirigami
+import org.kde.kirigami.private as KP
 
 TestCase {
     id: testCase
@@ -25,17 +23,17 @@ TestCase {
     // These buttons are required for getting the right metrics.
     // Since ActionToolBar bases all sizing on button sizes, we need to be able
     // to verify that layouting does the right thing.
-    property ToolButton iconButton: KirigamiPrivate.PrivateActionToolButton {
+    property ToolButton iconButton: KP.PrivateActionToolButton {
         display: Button.IconOnly
         action: Kirigami.Action { icon.name: "document-new"; text: "Test Action" }
         font.pointSize: 10
     }
-    property ToolButton textButton: KirigamiPrivate.PrivateActionToolButton {
+    property ToolButton textButton: KP.PrivateActionToolButton {
         display: Button.TextOnly
         action: Kirigami.Action { icon.name: "document-new"; text: "Test Action" }
         font.pointSize: 10
     }
-    property ToolButton textIconButton: KirigamiPrivate.PrivateActionToolButton {
+    property ToolButton textIconButton: KP.PrivateActionToolButton {
         action: Kirigami.Action { icon.name: "document-new"; text: "Test Action" }
         font.pointSize: 10
     }

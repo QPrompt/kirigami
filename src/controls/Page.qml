@@ -8,8 +8,8 @@ import QtQuick 2.5
 import QtQuick.Layouts 1.2
 import QtQuick.Templates 2.1 as T2
 import QtQuick.Controls 2.1 as QQC2
-import org.kde.kirigami 2.10 as Kirigami
-import "private" as P
+import org.kde.kirigami as Kirigami
+import org.kde.kirigami.private as KP
 
 /**
  * Page is a container for all the app pages: everything pushed to the
@@ -96,7 +96,7 @@ QQC2.Page {
      * @brief This holds the icon that represents this page.
      * @property var icon
      */
-    property P.ActionIconGroup icon: P.ActionIconGroup {}
+    property KP.ActionIconGroup icon: KP.ActionIconGroup {}
 
     /**
      * @brief Whether this page needs user attention.
@@ -123,7 +123,7 @@ QQC2.Page {
      */
     property Component titleDelegate: Component {
         id: defaultTitleDelegate
-        P.DefaultPageTitleDelegate {
+        KP.DefaultPageTitleDelegate {
             text: root.title
         }
     }

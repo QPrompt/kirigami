@@ -1,6 +1,7 @@
 
+add_subdirectory(controls/private)
+add_subdirectory(controls/templates)
 add_subdirectory(delegates)
-
 add_subdirectory(libkirigami)
 
 if (WIN32)
@@ -13,10 +14,16 @@ endif()
 ecm_add_qml_module(KirigamiPlugin URI "org.kde.kirigami" VERSION 2.0
     CLASS_NAME KirigamiPlugin
     DEPENDENCIES
-    "QtQuick.Controls"
-    "Qt5Compat.GraphicalEffects"
+        "QtQuick"
     IMPORTS
-    "org.kde.kirigami.delegates"
+        "QtQuick.Controls"
+        "QtQuick.Layouts"
+        "QtQuick.Templates"
+        "Qt5Compat.GraphicalEffects"
+        "org.kde.kirigami.delegates"
+        "org.kde.kirigami.private"
+        "org.kde.kirigami.private.globaltoolbar"
+        "org.kde.kirigami.templates"
     ${_extra_options}
 )
 
@@ -213,58 +220,6 @@ ecm_target_qml_sources(KirigamiPlugin VERSION 2.20 SOURCES
     controls/InlineViewHeader.qml
 )
 
-ecm_target_qml_sources(KirigamiPlugin PRIVATE PATH private SOURCES
-    controls/private/ActionIconGroup.qml
-    controls/private/ActionMenuItem.qml
-    controls/private/ActionsMenu.qml
-    controls/private/BannerImage.qml
-    controls/private/CardsGridViewPrivate.qml
-    controls/private/ContextDrawerActionItem.qml
-    controls/private/CornerShadow.qml
-    controls/private/DefaultCardBackground.qml
-    controls/private/DefaultChipBackground.qml
-    controls/private/DefaultPageTitleDelegate.qml
-    controls/private/EdgeShadow.qml
-    controls/private/GlobalDrawerActionItem.qml
-    controls/private/MobileDialogLayer.qml
-    controls/private/PrivateActionToolButton.qml
-    controls/private/SwipeItemEventFilter.qml
-)
-
-ecm_target_qml_sources(KirigamiPlugin PRIVATE PATH private/globaltoolbar SOURCES
-    controls/private/globaltoolbar/AbstractPageHeader.qml
-    controls/private/globaltoolbar/BreadcrumbControl.qml
-    controls/private/globaltoolbar/PageRowGlobalToolBarStyleGroup.qml
-    controls/private/globaltoolbar/PageRowGlobalToolBarUI.qml
-    controls/private/globaltoolbar/TitlesPageHeader.qml
-    controls/private/globaltoolbar/ToolBarPageHeader.qml
-    controls/private/globaltoolbar/ToolBarPageFooter.qml
-)
-
-ecm_target_qml_sources(KirigamiPlugin PRIVATE PATH templates SOURCES
-    controls/templates/AbstractApplicationHeader.qml
-    controls/templates/AbstractCard.qml
-    controls/templates/Chip.qml
-    controls/templates/InlineMessage.qml
-    controls/templates/OverlayDrawer.qml
-    controls/templates/OverlaySheet.qml
-    controls/templates/SingletonHeaderSizeGroup.qml
-    controls/templates/qmldir
-)
-
-ecm_target_qml_sources(KirigamiPlugin PRIVATE PATH templates/private SOURCES
-    controls/templates/private/BackButton.qml
-    controls/templates/private/BorderPropertiesGroup.qml
-    controls/templates/private/ContextIcon.qml
-    controls/templates/private/DrawerHandle.qml
-    controls/templates/private/ForwardButton.qml
-    controls/templates/private/GenericDrawerIcon.qml
-    controls/templates/private/IconPropertiesGroup.qml
-    controls/templates/private/MenuIcon.qml
-    controls/templates/private/PassiveNotificationsManager.qml
-    controls/templates/private/qmldir
-)
-
 qt_target_qml_sources(KirigamiPlugin RESOURCES
     styles/Material/InlineMessage.qml
     styles/Material/Theme.qml
@@ -295,9 +250,15 @@ endif()
 
 if (NOT BUILD_SHARED_LIBS)
     # Ensure we include any imported plugins into the main plugin when building
-    # statically as otherwise the plugin will not be found when importing the 
+    # statically as otherwise the plugin will not be found when importing the
     # main plugin.
-    target_link_libraries(KirigamiPlugin PRIVATE KirigamiDelegates)
+    target_link_libraries(KirigamiPlugin PRIVATE
+        KirigamiDelegatesPlugin
+        KirigamiPrivatePlugin
+        KirigamiPrivateGlobalToolBarPlugin
+        KirigamiTemplatesPlugin
+        KirigamiTemplatesPrivatePlugin
+    )
 endif()
 
 ecm_finalize_qml_module(KirigamiPlugin DESTINATION ${KDE_INSTALL_QMLDIR})

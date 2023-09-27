@@ -4,8 +4,7 @@
  *  SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-import QtQuick 2.6
-import QtQuick.Window 2.6
+import QtQuick
 import QtQuick.Controls 2.0 as QQC2
 import QtQuick.Controls.impl 2.3 as QQC2Impl
 import QtQuick.Layouts 1.2

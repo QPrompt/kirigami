@@ -4,9 +4,9 @@
  *  SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-import org.kde.kirigami 2.12 as Kirigami
-import "private" as P
-import "templates" as T
+import org.kde.kirigami as Kirigami
+import org.kde.kirigami.private as KP
+import org.kde.kirigami.templates as KT
 
 /**
  * @brief An overlay sheet that covers the current Page content.
@@ -18,10 +18,10 @@ import "templates" as T
  * are taller than the screen space.
  * @inherit org::kde::kirigami::templates::OverlaySheet
  */
-T.OverlaySheet {
+KT.OverlaySheet {
     id: root
 
-    background: P.DefaultCardBackground {
+    background: KP.DefaultCardBackground {
         Kirigami.Theme.colorSet: root.Kirigami.Theme.colorSet
         Kirigami.Theme.inherit: false
     }

@@ -4,10 +4,9 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15 as QQC2
 import QtQuick.Layouts 1.15
-import org.kde.kirigami 2.19 as Kirigami
-
-import "templates" as KT
-import "private" as P
+import org.kde.kirigami as Kirigami
+import org.kde.kirigami.private as KP
+import org.kde.kirigami.templates as KT
 
 /**
  * @brief A compact element that represents an attribute, action, or filter.
@@ -90,5 +89,5 @@ KT.Chip {
         }
     }
 
-    background: P.DefaultChipBackground {}
+    background: KP.DefaultChipBackground {}
 }

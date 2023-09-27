@@ -8,10 +8,8 @@ import QtQuick 2.15
 import QtQml 2.15
 import QtQuick.Controls 2.15 as QQC2
 import Qt5Compat.GraphicalEffects as GE
-import org.kde.kirigami 2.19 as Kirigami
-import org.kde.kirigami.templates 2.2 as KT
-import "private"
-
+import org.kde.kirigami as Kirigami
+import org.kde.kirigami.templates as KT
 
 // TODO KF6: undo many workarounds to make existing code work?
 

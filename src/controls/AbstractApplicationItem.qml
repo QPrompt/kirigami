@@ -9,8 +9,8 @@ import QtQml
 import QtQuick.Templates as T
 
 import org.kde.kirigami as Kirigami
-import "templates/private" as TP
-import "templates" as KT
+import org.kde.kirigami.templates as KT
+import org.kde.kirigami.templates.private as KTP
 
 /**
  * @brief An item that provides the features of AbstractApplicationWindow without the window itself.
@@ -332,7 +332,7 @@ Item {
     LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
     LayoutMirroring.childrenInherit: true
 
-    TP.PassiveNotificationsManager {
+    KTP.PassiveNotificationsManager {
         id: notificationsObject
         anchors.bottom: parent.bottom
         anchors.horizontalCenter: parent.horizontalCenter

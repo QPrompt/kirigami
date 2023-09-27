@@ -7,9 +7,9 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15 as QQC2
 import QtQuick.Layouts 1.15
-import org.kde.kirigami 2.19 as Kirigami
-import "../../templates/private" as TP
-import "../" as P
+import org.kde.kirigami as Kirigami
+import org.kde.kirigami.private as KP
+import org.kde.kirigami.templates.private as KTP
 
 Kirigami.AbstractApplicationHeader {
     id: header
@@ -55,7 +55,7 @@ Kirigami.AbstractApplicationHeader {
             Layout.preferredWidth: height
         }
 
-        P.PrivateActionToolButton {
+        KP.PrivateActionToolButton {
             id: menuButton
             visible: !Kirigami.Settings.isMobile && applicationWindow().globalDrawer && "isMenu" in applicationWindow().globalDrawer && applicationWindow().globalDrawer.isMenu
             icon.name: "open-menu-symbolic"
@@ -96,14 +96,14 @@ Kirigami.AbstractApplicationHeader {
 
             Layout.maximumWidth: visibleChildren.length > 0 ? Layout.preferredWidth : 0
 
-            TP.BackButton {
+            KTP.BackButton {
                 id: backButton
                 Layout.leftMargin: leftHandleAnchor.visible ? 0 : Kirigami.Units.smallSpacing
                 Layout.minimumWidth: implicitHeight
                 Layout.minimumHeight: implicitHeight
                 Layout.maximumHeight: buttonsLayout.height
             }
-            TP.ForwardButton {
+            KTP.ForwardButton {
                 id: forwardButton
                 Layout.minimumWidth: implicitHeight
                 Layout.minimumHeight: implicitHeight

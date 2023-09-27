@@ -9,7 +9,7 @@ import QtQuick.Templates 2.3 as T2
 import QtQuick.Controls 2.2 as QQC2
 import QtQuick.Layouts 1.2
 import org.kde.kirigami 2.13 as Kirigami
-import "private" as P
+import org.kde.kirigami.private as KP
 
 /**
  * A specialized form of the Drawer intended for showing an application's
@@ -325,7 +325,7 @@ OverlayDrawer {
                 Layout.fillWidth: true
                 // visible: !bannerImage.empty || root.collapsible
 
-                P.BannerImage {
+                KP.BannerImage {
                     id: bannerImage
 
 
@@ -344,7 +344,7 @@ OverlayDrawer {
                         anchors.fill: parent
                         onClicked: mouse => root.bannerClicked()
                     }
-                    P.EdgeShadow {
+                    KP.EdgeShadow {
                         edge: Qt.BottomEdge
                         visible: bannerImageSource != ""
                         anchors {
@@ -422,7 +422,7 @@ OverlayDrawer {
                     Layout.fillWidth: true
                     Layout.minimumHeight: currentItem ? currentItem.implicitHeight : 0
                     Layout.maximumHeight: Layout.minimumHeight
-                    property P.ActionsMenu openSubMenu
+                    property KP.ActionsMenu openSubMenu
                     initialItem: menuComponent
                     // NOTE: it's important those are NumberAnimation and not XAnimators
                     // as while the animation is running the drawer may close, and
@@ -531,7 +531,7 @@ OverlayDrawer {
                             model: root.actions
                             delegate: Column {
                                 width: parent.width
-                                P.GlobalDrawerActionItem {
+                                KP.GlobalDrawerActionItem {
                                     id: drawerItem
                                     visible: (modelData.hasOwnProperty("visible") && modelData.visible) && (root.collapsed || !(modelData.hasOwnProperty("expandible") && modelData.expandible))
                                     width: parent.width
@@ -575,7 +575,7 @@ OverlayDrawer {
                                 Repeater {
                                     id: __repeater
                                     model: headerItem.visible ? modelData.children : null
-                                    delegate: P.GlobalDrawerActionItem {
+                                    delegate: KP.GlobalDrawerActionItem {
                                         width: parent.width
                                         opacity: !root.collapsed
                                         leftPadding: actionsRepeater.withSections && !root.collapsed && !root.modal ? padding * 2 : padding * 4

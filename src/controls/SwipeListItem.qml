@@ -8,8 +8,8 @@ import QtQuick 2.6
 import QtQuick.Layouts 1.4
 import QtQuick.Controls 2.4 as QQC2
 import QtQuick.Controls 2.4 as QQC2
-import org.kde.kirigami 2.11 as Kirigami
-import "private"
+import org.kde.kirigami as Kirigami
+import org.kde.kirigami.private as KP
 
 /**
  * An item delegate intended to support extra actions obtainable
@@ -448,7 +448,7 @@ QQC2.SwipeDelegate {
             visible: listItem.swipe.position != 0
 
 
-            EdgeShadow {
+            KP.EdgeShadow {
                 edge: Qt.TopEdge
                 visible: background.x != 0
                 anchors {
@@ -457,7 +457,7 @@ QQC2.SwipeDelegate {
                     top: parent.top
                 }
             }
-            EdgeShadow {
+            KP.EdgeShadow {
                 edge: listItem.mirrored ? Qt.RightEdge : Qt.LeftEdge
                 x: listItem.mirrored ? listItem.background.x - width : (listItem.background.x + listItem.background.width)
                 visible: background.x != 0
