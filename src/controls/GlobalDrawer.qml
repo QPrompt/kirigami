@@ -5,7 +5,7 @@
  */
 
 import QtQuick 2.12
-import QtQuick.Templates 2.3 as T2
+import QtQuick.Templates 2.3 as T
 import QtQuick.Controls 2.2 as QQC2
 import QtQuick.Layouts 1.2
 import org.kde.kirigami 2.13 as Kirigami
@@ -265,7 +265,7 @@ OverlayDrawer {
      * @brief This function reverts the menu back to its initial state
      */
     function resetMenu() {
-        stackView.pop(stackView.get(0, T2.StackView.DontLoad));
+        stackView.pop(stackView.get(0, T.StackView.DontLoad));
         if (root.modal) {
             root.drawerOpen = false;
         }
@@ -282,10 +282,10 @@ OverlayDrawer {
             if (header.z === undefined) {
                 header.z = 1;
             }
-            if (header instanceof T2.ToolBar) {
-                header.position = T2.ToolBar.Header
-            } else if (header instanceof T2.DialogButtonBox) {
-                header.position = T2.DialogButtonBox.Header
+            if (header instanceof T.ToolBar) {
+                header.position = T.ToolBar.Header
+            } else if (header instanceof T.DialogButtonBox) {
+                header.position = T.DialogButtonBox.Header
             }
         }
     }
@@ -416,7 +416,7 @@ OverlayDrawer {
                     }
                 }
 
-                T2.StackView {
+                T.StackView {
                     id: stackView
                     clip: true
                     Layout.fillWidth: true

@@ -5,7 +5,7 @@
  */
 
 import QtQuick 2.1
-import QtQuick.Templates 2.0 as T2
+import QtQuick.Templates 2.0 as T
 import org.kde.kirigami 2.15 as Kirigami
 import org.kde.kirigami.private as KP
 import org.kde.kirigami.templates as KT
@@ -26,7 +26,7 @@ KT.OverlayDrawer {
     focus: false
     modal: true
     drawerOpen: !modal
-    closePolicy: modal ? T2.Popup.CloseOnEscape | T2.Popup.CloseOnReleaseOutside : T2.Popup.NoAutoClose
+    closePolicy: modal ? T.Popup.CloseOnEscape | T.Popup.CloseOnReleaseOutside : T.Popup.NoAutoClose
     handleVisible: interactive && (modal || !drawerOpen) && (typeof(applicationWindow)===typeof(Function) && applicationWindow() ? applicationWindow().controlsVisible : true)
 
     // FIXME: set to false when it does not lead to blocking closePolicy.

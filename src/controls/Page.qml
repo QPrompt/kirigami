@@ -6,7 +6,7 @@
 
 import QtQuick 2.5
 import QtQuick.Layouts 1.2
-import QtQuick.Templates 2.1 as T2
+import QtQuick.Templates 2.1 as T
 import QtQuick.Controls 2.1 as QQC2
 import org.kde.kirigami as Kirigami
 import org.kde.kirigami.private as KP
@@ -214,9 +214,9 @@ QQC2.Page {
         if (root.Kirigami.ColumnView.view) {
             globalToolBar.row = root.Kirigami.ColumnView.view.__pageRow;
         }
-        if (root.T2.StackView.view) {
-            globalToolBar.stack = root.T2.StackView.view;
-            globalToolBar.row = root.T2.StackView.view ? root.T2.StackView.view.parent : null;
+        if (root.T.StackView.view) {
+            globalToolBar.stack = root.T.StackView.view;
+            globalToolBar.row = root.T.StackView.view ? root.T.StackView.view.parent : null;
         }
         if (globalToolBar.row) {
             root.globalToolBarStyleChanged.connect(globalToolBar.syncSource);
@@ -247,7 +247,7 @@ QQC2.Page {
                 top: parent.top
             }
             property Kirigami.PageRow row
-            property T2.StackView stack
+            property T.StackView stack
 
             // don't load async so that on slower devices we don't have the page content height changing while loading in
             // otherwise, it looks unpolished and jumpy
@@ -292,7 +292,7 @@ QQC2.Page {
     footer: Loader {
         id: bottomToolBar
 
-        property T2.Page page: root
+        property T.Page page: root
         property bool pageComplete: false
 
         active: {

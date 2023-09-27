@@ -5,7 +5,7 @@
  */
 
 import QtQuick 2.15
-import QtQuick.Templates 2.15 as T2
+import QtQuick.Templates 2.15 as T
 import QtQuick.Controls 2.15 as QQC2
 import org.kde.kirigami as Kirigami
 import org.kde.kirigami.templates.private as KTP
@@ -19,7 +19,7 @@ import org.kde.kirigami.templates.private as KTP
  *
  * @inherit QtQuick.Controls.Drawer
  */
-T2.Drawer {
+T.Drawer {
     id: root
 
 //BEGIN properties
@@ -169,11 +169,11 @@ T2.Drawer {
     rightPadding: Kirigami.Units.smallSpacing
     bottomPadding: Kirigami.Units.smallSpacing
 
-    y: modal ? 0 : ((T2.ApplicationWindow.menuBar ? T2.ApplicationWindow.menuBar.height : 0) + (T2.ApplicationWindow.header ? T2.ApplicationWindow.header.height : 0))
+    y: modal ? 0 : ((T.ApplicationWindow.menuBar ? T.ApplicationWindow.menuBar.height : 0) + (T.ApplicationWindow.header ? T.ApplicationWindow.header.height : 0))
 
-    height: parent && (root.edge === Qt.LeftEdge || root.edge === Qt.RightEdge) ? (modal ? parent.height : (parent.height - y - (T2.ApplicationWindow.footer ? T2.ApplicationWindow.footer.height : 0))) : implicitHeight
+    height: parent && (root.edge === Qt.LeftEdge || root.edge === Qt.RightEdge) ? (modal ? parent.height : (parent.height - y - (T.ApplicationWindow.footer ? T.ApplicationWindow.footer.height : 0))) : implicitHeight
 
-    parent: modal || edge === Qt.LeftEdge || edge === Qt.RightEdge ? T2.ApplicationWindow.overlay : T2.ApplicationWindow.contentItem
+    parent: modal || edge === Qt.LeftEdge || edge === Qt.RightEdge ? T.ApplicationWindow.overlay : T.ApplicationWindow.contentItem
 
     edge: Qt.LeftEdge
     modal: true

@@ -7,7 +7,7 @@
 import QtQuick 2.15
 import QtQuick.Layouts 1.3
 import QtQuick.Controls 2.15 as QQC2
-import QtQuick.Templates 2.15 as T2
+import QtQuick.Templates 2.15 as T
 import org.kde.kirigami as Kirigami
 
 /**
@@ -34,7 +34,7 @@ import org.kde.kirigami as Kirigami
  * @inherit QtQuick.Templates.Popup
  */
 
-T2.Popup {
+T.Popup {
     id: root
 
     Kirigami.OverlayZStacking.layer: Kirigami.OverlayZStacking.FullScreen
