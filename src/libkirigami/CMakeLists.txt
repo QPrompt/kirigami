@@ -37,12 +37,6 @@ ecm_qt_declare_logging_category(libkirigami_extra_sources
     EXPORT KIRIGAMI
 )
 
-ecm_qt_install_logging_categories(
-    EXPORT KIRIGAMI
-    FILE kirigami.categories
-    DESTINATION ${KDE_INSTALL_LOGGINGCATEGORIESDIR}
-)
-
 ecm_generate_export_header(KF6Kirigami2
     VERSION ${KF_VERSION}
     BASE_NAME Kirigami2
@@ -54,7 +48,9 @@ target_sources(KF6Kirigami2 PRIVATE ${libkirigami_extra_sources})
 
 target_include_directories(KF6Kirigami2
     PRIVATE ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR}
-    INTERFACE "$<INSTALL_INTERFACE:${KIRIGAMI_INSTALL_INCLUDEDIR}>"
+    INTERFACE
+    "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/..>"
+    "$<INSTALL_INTERFACE:${KIRIGAMI_INSTALL_INCLUDEDIR}>"
 )
 
 target_link_libraries(KF6Kirigami2

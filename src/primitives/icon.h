@@ -28,6 +28,7 @@ class Units;
 class Icon : public QQuickItem
 {
     Q_OBJECT
+    QML_ELEMENT
 
     /**
      * The source of this icon. An `Icon` can pull from:

@@ -1,7 +1,8 @@
 
-add_subdirectory(delegates)
-
 add_subdirectory(libkirigami)
+
+add_subdirectory(primitives)
+add_subdirectory(delegates)
 
 if (WIN32)
     # Kirigami apparently adds too many sources so on Windows we end
@@ -16,6 +17,7 @@ ecm_add_qml_module(KirigamiPlugin URI "org.kde.kirigami" VERSION 2.0
     "QtQuick.Controls"
     "Qt5Compat.GraphicalEffects"
     IMPORTS
+    "org.kde.kirigami.primitives"
     "org.kde.kirigami.delegates"
     ${_extra_options}
 )
@@ -41,8 +43,6 @@ target_sources(KirigamiPlugin PRIVATE
     formlayoutattached.cpp
     formlayoutattached.h
     headerfooterlayout.cpp
-    icon.cpp
-    icon.h
     imagecolors.cpp
     imagecolors.h
     kirigamiplugin.cpp
@@ -57,10 +57,6 @@ target_sources(KirigamiPlugin PRIVATE
     scenepositionattached.h
     settings.cpp
     settings.h
-    shadowedrectangle.cpp
-    shadowedrectangle.h
-    shadowedtexture.cpp
-    shadowedtexture.h
     sizegroup.cpp
     sizegroup.h
     spellcheckattached.cpp
@@ -73,54 +69,7 @@ target_sources(KirigamiPlugin PRIVATE
     wheelhandler.h
     inputmethod.cpp
 
-    scenegraph/managedtexturenode.cpp
-    scenegraph/managedtexturenode.h
-    scenegraph/paintedrectangleitem.cpp
-    scenegraph/paintedrectangleitem.h
     ${CMAKE_CURRENT_BINARY_DIR}/libkirigami/loggingcategory.cpp
-)
-if (HAVE_QTGUI_OPENGL AND NOT KF6_PORTING_TODO)
-    target_sources(KirigamiPlugin PRIVATE
-        scenegraph/shadowedborderrectanglematerial.cpp
-        scenegraph/shadowedborderrectanglematerial.h
-        scenegraph/shadowedbordertexturematerial.cpp
-        scenegraph/shadowedbordertexturematerial.h
-        scenegraph/shadowedrectanglematerial.cpp
-        scenegraph/shadowedrectanglematerial.h
-        scenegraph/shadowedrectanglenode.cpp
-        scenegraph/shadowedrectanglenode.h
-        scenegraph/shadowedtexturematerial.cpp
-        scenegraph/shadowedtexturematerial.h
-        scenegraph/shadowedtexturenode.cpp
-        scenegraph/shadowedtexturenode.h
-    )
-endif()
-
-qt6_add_shaders(KirigamiPlugin "shaders6"
-    BATCHABLE
-    PRECOMPILE
-    OPTIMIZED
-    PREFIX "/org/kde/kirigami/shaders"
-    FILES
-        scenegraph/shaders6/shadowedrectangle.vert
-        scenegraph/shaders6/shadowedrectangle.frag
-        scenegraph/shaders6/shadowedrectangle_lowpower.frag
-        scenegraph/shaders6/shadowedborderrectangle.frag
-        scenegraph/shaders6/shadowedborderrectangle_lowpower.frag
-        scenegraph/shaders6/shadowedtexture.frag
-        scenegraph/shaders6/shadowedtexture_lowpower.frag
-        scenegraph/shaders6/shadowedbordertexture.frag
-        scenegraph/shaders6/shadowedbordertexture_lowpower.frag
-    OUTPUTS
-        shadowedrectangle.vert.qsb
-        shadowedrectangle.frag.qsb
-        shadowedrectangle_lowpower.frag.qsb
-        shadowedborderrectangle.frag.qsb
-        shadowedborderrectangle_lowpower.frag.qsb
-        shadowedtexture.frag.qsb
-        shadowedtexture_lowpower.frag.qsb
-        shadowedbordertexture.frag.qsb
-        shadowedbordertexture_lowpower.frag.qsb
 )
 
 ecm_target_qml_sources(KirigamiPlugin SOURCES
@@ -134,7 +83,6 @@ ecm_target_qml_sources(KirigamiPlugin SOURCES
     controls/ContextDrawer.qml
     controls/GlobalDrawer.qml
     controls/Heading.qml
-    controls/Separator.qml
     controls/PageRow.qml
     controls/OverlaySheet.qml
     controls/Page.qml
@@ -161,7 +109,6 @@ ecm_target_qml_sources(KirigamiPlugin VERSION 2.4 SOURCES
 )
 
 ecm_target_qml_sources(KirigamiPlugin VERSION 2.5 SOURCES
-    controls/ListItemDragHandle.qml
     controls/ActionToolBar.qml
 )
 
@@ -189,7 +136,6 @@ ecm_target_qml_sources(KirigamiPlugin VERSION 2.11 SOURCES
 )
 
 ecm_target_qml_sources(KirigamiPlugin VERSION 2.12 SOURCES
-    controls/ShadowedImage.qml
     controls/PlaceholderMessage.qml
 )
 
@@ -288,6 +234,9 @@ target_link_libraries(KirigamiPlugin
     Qt6::QuickControls2
     Qt6::Concurrent
     KF6Kirigami2
+
+    # Submodules, link against these so the precompiled data from QRC can be used
+    KirigamiPrimitives
 )
 
 if (HAVE_OpenMP)
@@ -309,3 +258,9 @@ if (ANDROID)
         RENAME KF6Kirigami2_${CMAKE_ANDROID_ARCH_ABI}-android-dependencies.xml
     )
 endif()
+
+ecm_qt_install_logging_categories(
+    EXPORT KIRIGAMI
+    FILE kirigami.categories
+    DESTINATION ${KDE_INSTALL_LOGGINGCATEGORIESDIR}
+)

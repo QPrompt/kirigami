@@ -13,7 +13,6 @@
 #include "enums.h"
 #include "formlayoutattached.h"
 #include "headerfooterlayout.h"
-#include "icon.h"
 #include "imagecolors.h"
 #include "inputmethod.h"
 #include "mnemonicattached.h"
@@ -21,8 +20,6 @@
 #include "pagepool.h"
 #include "scenepositionattached.h"
 #include "settings.h"
-#include "shadowedrectangle.h"
-#include "shadowedtexture.h"
 #include "sizegroup.h"
 #include "spellcheckattached.h"
 #include "toolbarlayout.h"
@@ -165,10 +162,7 @@ void KirigamiPlugin::registerTypes(const char *uri)
     qmlRegisterType(componentUrl(QStringLiteral("ContextDrawer.qml")), uri, 2, 0, "ContextDrawer");
     qmlRegisterType(componentUrl(QStringLiteral("GlobalDrawer.qml")), uri, 2, 0, "GlobalDrawer");
     qmlRegisterType(componentUrl(QStringLiteral("Heading.qml")), uri, 2, 0, "Heading");
-    qmlRegisterType(componentUrl(QStringLiteral("Separator.qml")), uri, 2, 0, "Separator");
     qmlRegisterType(componentUrl(QStringLiteral("PageRow.qml")), uri, 2, 0, "PageRow");
-
-    qmlRegisterType<Icon>(uri, 2, 0, "Icon");
 
     qmlRegisterType(componentUrl(QStringLiteral("OverlaySheet.qml")), uri, 2, 0, "OverlaySheet");
     qmlRegisterType(componentUrl(QStringLiteral("Page.qml")), uri, 2, 0, "Page");
@@ -211,7 +205,6 @@ void KirigamiPlugin::registerTypes(const char *uri)
     qmlRegisterType<DelegateRecycler>(uri, 2, 4, "DelegateRecycler");
 
     // 2.5
-    qmlRegisterType(componentUrl(QStringLiteral("ListItemDragHandle.qml")), uri, 2, 5, "ListItemDragHandle");
     qmlRegisterType(componentUrl(QStringLiteral("ActionToolBar.qml")), uri, 2, 5, "ActionToolBar");
     qmlRegisterUncreatableType<ScenePositionAttached>(uri,
                                                       2,
@@ -245,16 +238,9 @@ void KirigamiPlugin::registerTypes(const char *uri)
     qmlRegisterType(componentUrl(QStringLiteral("PagePoolAction.qml")), uri, 2, 11, "PagePoolAction");
 
     // 2.12
-    qmlRegisterType<ShadowedRectangle>(uri, 2, 12, "ShadowedRectangle");
-    qmlRegisterType<ShadowedTexture>(uri, 2, 12, "ShadowedTexture");
     qmlRegisterType(componentUrl(QStringLiteral("ShadowedImage.qml")), uri, 2, 12, "ShadowedImage");
     qmlRegisterType(componentUrl(QStringLiteral("PlaceholderMessage.qml")), uri, 2, 12, "PlaceholderMessage");
-
-    qmlRegisterUncreatableType<BorderGroup>(uri, 2, 12, "BorderGroup", QStringLiteral("Used as grouped property"));
-    qmlRegisterUncreatableType<ShadowGroup>(uri, 2, 12, "ShadowGroup", QStringLiteral("Used as grouped property"));
     qmlRegisterSingletonType<ColorUtils>(uri, 2, 12, "ColorUtils", singleton<ColorUtils>());
-
-    qmlRegisterUncreatableType<CornersGroup>(uri, 2, 12, "CornersGroup", QStringLiteral("Used as grouped property"));
 
     // 2.13
     qmlRegisterType<ImageColors>(uri, 2, 13, "ImageColors");
