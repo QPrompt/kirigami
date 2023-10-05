@@ -1,4 +1,5 @@
 
+add_library(KirigamiDelegates)
 ecm_add_qml_module(KirigamiDelegates URI "org.kde.kirigami.delegates" NO_PLUGIN)
 
 ecm_target_qml_sources(KirigamiDelegates SOURCES
@@ -12,3 +13,5 @@ ecm_target_qml_sources(KirigamiDelegates SOURCES
 )
 
 ecm_finalize_qml_module(KirigamiDelegates)
+
+install(TARGETS KirigamiDelegates ${KDE_INSTALL_DEFAULT_ARGUMENTS})
