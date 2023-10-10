@@ -60,7 +60,7 @@ QQC2.ItemDelegate {
         spacing: Kirigami.Units.largeSpacing
 
         Kirigami.Heading {
-            Layout.fillWidth: rowLayout.children.length === 1
+            Layout.fillWidth: rowLayout.children.length === 2
             Layout.alignment: Qt.AlignVCenter
 
             opacity: 0.7
