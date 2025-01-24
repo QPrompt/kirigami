@@ -42,6 +42,11 @@ set_target_properties(KirigamiPrimitives PROPERTIES
     VERSION     ${PROJECT_VERSION}
     SOVERSION   6
     EXPORT_NAME "KirigamiPrimitives"
+    LIBRARY_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/lib"
+    FRAMEWORK TRUE
+    FRAMEWORK_VERSION 1
+    MACOSX_RPATH TRUE
+    MACOSX_FRAMEWORK_IDENTIFIER org.kde.KirigamiPrimitives
 )
 
 target_include_directories(KirigamiPrimitives PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/..)
@@ -83,5 +88,7 @@ qt6_add_shaders(KirigamiPrimitives "shaders"
 
 ecm_finalize_qml_module(KirigamiPrimitives EXPORT KirigamiTargets)
 
-install(TARGETS KirigamiPrimitives ${_out_targets} EXPORT KirigamiTargets ${KF_INSTALL_TARGETS_DEFAULT_ARGS})
+install(TARGETS KirigamiPrimitives ${_out_targets} EXPORT KirigamiTargets ${KF_INSTALL_TARGETS_DEFAULT_ARGS}
+    LIBRARY FRAMEWORK DESTINATION "${PROJECT_BINARY_DIR}/lib"
+)
 

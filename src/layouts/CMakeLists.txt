@@ -35,6 +35,11 @@ set_target_properties(KirigamiLayouts PROPERTIES
     VERSION     ${PROJECT_VERSION}
     SOVERSION   6
     EXPORT_NAME "KirigamiLayouts"
+    LIBRARY_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/lib"
+    FRAMEWORK TRUE
+    FRAMEWORK_VERSION 1
+    MACOSX_RPATH TRUE
+    MACOSX_FRAMEWORK_IDENTIFIER org.kde.KirigamiLayouts
 )
 
 target_include_directories(KirigamiLayouts PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/..)
@@ -49,4 +54,6 @@ endif()
 
 ecm_finalize_qml_module(KirigamiLayouts EXPORT KirigamiTargets)
 
-install(TARGETS KirigamiLayouts EXPORT KirigamiTargets ${KF_INSTALL_DEFAULT_ARGUMENTS})
+install(TARGETS KirigamiLayouts EXPORT KirigamiTargets ${KF_INSTALL_DEFAULT_ARGUMENTS}
+    LIBRARY FRAMEWORK DESTINATION "${PROJECT_BINARY_DIR}/lib"
+)

@@ -13,6 +13,11 @@ set_target_properties(KirigamiPlatform PROPERTIES
     VERSION     ${PROJECT_VERSION}
     SOVERSION   6
     EXPORT_NAME "KirigamiPlatform"
+    LIBRARY_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/lib"
+    FRAMEWORK TRUE
+    FRAMEWORK_VERSION 1
+    MACOSX_RPATH TRUE
+    MACOSX_FRAMEWORK_IDENTIFIER org.kde.KirigamiPlatform
 )
 
 target_sources(KirigamiPlatform PRIVATE
@@ -116,7 +121,9 @@ install(FILES
     COMPONENT Devel
 )
 
-install(TARGETS KirigamiPlatform EXPORT KF6KirigamiPlatformTargets ${KF_INSTALL_TARGETS_DEFAULT_ARGS})
+install(TARGETS KirigamiPlatform EXPORT KF6KirigamiPlatformTargets ${KF_INSTALL_TARGETS_DEFAULT_ARGS}
+    LIBRARY FRAMEWORK DESTINATION "${PROJECT_BINARY_DIR}/lib"
+)
 
 install(EXPORT KF6KirigamiPlatformTargets
     DESTINATION ${KDE_INSTALL_CMAKEPACKAGEDIR}/KF6KirigamiPlatform

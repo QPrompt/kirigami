@@ -20,6 +20,11 @@ set_target_properties(KirigamiDialogs PROPERTIES
     VERSION     ${PROJECT_VERSION}
     SOVERSION   6
     EXPORT_NAME "KirigamiDialogs"
+    LIBRARY_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/lib"
+    FRAMEWORK TRUE
+    FRAMEWORK_VERSION 1
+    MACOSX_RPATH TRUE
+    MACOSX_FRAMEWORK_IDENTIFIER org.kde.KirigamiDialogs
 )
 
 target_include_directories(KirigamiDialogs PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/..)
@@ -28,4 +33,6 @@ target_link_libraries(KirigamiDialogs PRIVATE Qt6::Quick KirigamiPlatform)
 
 ecm_finalize_qml_module(KirigamiDialogs EXPORT KirigamiTargets)
 
-install(TARGETS KirigamiDialogs EXPORT KirigamiTargets ${KF_INSTALL_DEFAULT_ARGUMENTS})
+install(TARGETS KirigamiDialogs EXPORT KirigamiTargets ${KF_INSTALL_DEFAULT_ARGUMENTS}
+    LIBRARY FRAMEWORK DESTINATION "${PROJECT_BINARY_DIR}/lib"
+)

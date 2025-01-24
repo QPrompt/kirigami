@@ -35,6 +35,11 @@ set_target_properties(KirigamiPrivate PROPERTIES
     VERSION     ${PROJECT_VERSION}
     SOVERSION   6
     EXPORT_NAME "KirigamiPrivate"
+    LIBRARY_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/lib"
+    FRAMEWORK TRUE
+    FRAMEWORK_VERSION 1
+    MACOSX_RPATH TRUE
+    MACOSX_FRAMEWORK_IDENTIFIER org.kde.KirigamiPrivate
 )
 
 target_sources(KirigamiPrivate PRIVATE
@@ -48,7 +53,9 @@ target_link_libraries(KirigamiPrivate PRIVATE Qt6::Gui)
 
 ecm_finalize_qml_module(KirigamiPrivate DESTINATION ${KDE_INSTALL_QMLDIR} EXPORT KirigamiTargets)
 
-install(TARGETS KirigamiPrivate EXPORT KirigamiTargets ${KF_INSTALL_TARGETS_DEFAULT_ARGS})
+install(TARGETS KirigamiPrivate EXPORT KirigamiTargets ${KF_INSTALL_TARGETS_DEFAULT_ARGS}
+    LIBRARY FRAMEWORK DESTINATION "${PROJECT_BINARY_DIR}/lib"
+)
 
 # Module: org.kde.kirigami
 
@@ -83,6 +90,11 @@ set_target_properties(Kirigami PROPERTIES
     VERSION     ${PROJECT_VERSION}
     SOVERSION   6
     EXPORT_NAME "Kirigami"
+    LIBRARY_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/lib"
+    FRAMEWORK TRUE
+    FRAMEWORK_VERSION 1
+    MACOSX_RPATH TRUE
+    MACOSX_FRAMEWORK_IDENTIFIER org.kde.Kirigami
 )
 
 target_include_directories(Kirigami PRIVATE
@@ -299,7 +311,8 @@ else()
     )
 endif()
 
-install(TARGETS Kirigami ${_out_targets_1} ${_out_targets_2} EXPORT KirigamiTargets ${KF_INSTALL_TARGETS_DEFAULT_ARGS})
+install(TARGETS Kirigami ${_out_targets_1} ${_out_targets_2} EXPORT KirigamiTargets ${KF_INSTALL_TARGETS_DEFAULT_ARGS}
+    LIBRARY FRAMEWORK DESTINATION "${PROJECT_BINARY_DIR}/lib")
 install(EXPORT KirigamiTargets
     DESTINATION ${KDE_INSTALL_CMAKEPACKAGEDIR}/KF6Kirigami
     FILE KF6KirigamiTargets.cmake
