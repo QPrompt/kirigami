@@ -23,10 +23,10 @@ public:
     void registerTypes(const char *uri) override;
     void initializeEngine(QQmlEngine *engine, const char *uri) override;
 
-#ifdef KIRIGAMI_BUILD_TYPE_STATIC
+// #ifdef KIRIGAMI_BUILD_TYPE_STATIC
     static KirigamiPlugin &getInstance();
     static void registerTypes(QQmlEngine *engine = nullptr);
-#endif
+// #endif
 
 Q_SIGNALS:
     void languageChangeEvent();

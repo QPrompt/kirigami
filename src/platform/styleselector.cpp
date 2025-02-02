@@ -91,24 +91,24 @@ void StyleSelector::setBaseUrl(const QUrl &baseUrl)
 
 QString StyleSelector::resolveFilePath(const QString &path)
 {
-#if defined(KIRIGAMI_BUILD_TYPE_STATIC) || defined(Q_OS_ANDROID)
+// #if defined(KIRIGAMI_BUILD_TYPE_STATIC) || defined(Q_OS_ANDROID)
     return QStringLiteral(":/qt/qml/org/kde/kirigami/") + path;
-#else
-    if (s_baseUrl.isValid()) {
-        return s_baseUrl.toLocalFile() + QLatin1Char('/') + path;
-    } else {
-        return QDir::currentPath() + QLatin1Char('/') + path;
-    }
-#endif
+// #else
+//     if (s_baseUrl.isValid()) {
+//         return s_baseUrl.toLocalFile() + QLatin1Char('/') + path;
+//     } else {
+//         return QDir::currentPath() + QLatin1Char('/') + path;
+//     }
+// #endif
 }
 
 QString StyleSelector::resolveFileUrl(const QString &path)
 {
-#if defined(KIRIGAMI_BUILD_TYPE_STATIC) || defined(Q_OS_ANDROID)
+// #if defined(KIRIGAMI_BUILD_TYPE_STATIC) || defined(Q_OS_ANDROID)
     return QStringLiteral("qrc:/qt/qml/org/kde/kirigami/") + path;
-#else
-    return s_baseUrl.toString() + QLatin1Char('/') + path;
-#endif
+// #else
+//     return s_baseUrl.toString() + QLatin1Char('/') + path;
+// #endif
 }
 
 }

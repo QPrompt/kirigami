@@ -254,7 +254,7 @@ void Units::setcornerRadius(qreal cornerRadius)
 
 Units *Units::create(QQmlEngine *qmlEngine, [[maybe_unused]] QJSEngine *jsEngine)
 {
-#ifndef KIRIGAMI_BUILD_TYPE_STATIC
+// #ifndef KIRIGAMI_BUILD_TYPE_STATIC
     const QString pluginName = qmlEngine->property("_kirigamiTheme").toString();
 
     auto plugin = PlatformPluginFactory::findPlugin(pluginName);
@@ -265,7 +265,7 @@ Units *Units::create(QQmlEngine *qmlEngine, [[maybe_unused]] QJSEngine *jsEngine
     if (plugin) {
         return plugin->createUnits(qmlEngine);
     }
-#endif
+// #endif
     // Fall back to the default units implementation
     return new Units(qmlEngine);
 }

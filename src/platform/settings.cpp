@@ -215,9 +215,9 @@ bool Settings::smoothScroll() const
 QStringList Settings::information() const
 {
     return {
-#ifndef KIRIGAMI_BUILD_TYPE_STATIC
+// #ifndef KIRIGAMI_BUILD_TYPE_STATIC
         tr("KDE Frameworks %1").arg(QStringLiteral(KIRIGAMIPLATFORM_VERSION_STRING)),
-#endif
+// #endif
         tr("The %1 windowing system").arg(QGuiApplication::platformName()),
         tr("Qt %2 (built against %3)").arg(QString::fromLocal8Bit(qVersion()), QStringLiteral(QT_VERSION_STR))};
 }
